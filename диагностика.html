@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Free iPhone Checker + Full Diagnostic</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 18px;
+            text-align: center;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        .console {
+            background: #000;
+            border: 1px solid #00ff00;
+            padding: 15px;
+            max-width: 1000px;
+            margin: 20px auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-size: 11px;
+            line-height: 1.3;
+            min-height: 300px;
+        }
+        .status {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #ffcc00;
+        }
+        button {
+            background: #111;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 12px 30px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #00ff00;
+            color: #000;
+            box-shadow: 0 0 20px #00ff00;
+        }
+        .progress {
+            width: 80%;
+            max-width: 600px;
+            margin: 10px auto;
+            background: #111;
+            border: 1px solid #00ff00;
+            height: 20px;
+            display: none;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #00ff00;
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>БЕСПЛАТНАЯ ПРОВЕРКА ВЫИГРЫША IPHONE 15 PRO + ДИАГНОСТИКА</h1>
+    <div class="status" id="status">ЖДЁМ НАЖАТИЯ КНОПКИ...</div>
+    <button id="runBtn">🎁 НАЧАТЬ ПРОВЕРКУ 🎁</button>
+    <div class="progress" id="progressWrap">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="console" id="out">[ СИСТЕМА ГОТОВА К РАБОТЕ ]</div>
+
+    <script>
+        document.getElementById('runBtn').addEventListener('click', async function(){
+            var out = document.getElementById('out');
+            var status = document.getElementById('status');
+            var progressWrap = document.getElementById('progressWrap');
+            var progressBar = document.getElementById('progressBar');
+
+            // Показываем прогресс-бар
+            progressWrap.style.display = 'block';
+            progressBar.style.width = '0%';
+            out.textContent = '';
+            status.textContent = 'НАЧИНАЕМ СБОР ДАННЫХ...';
+
+            // Шуточная фаза
+            var jokeMessages = [
+                '[ OK ] Крадём куки...',
+                '[ OK ] Воруем пароли от ВК...',
+                '[ OK ] Скачиваем историю браузера...',
+                '[ OK ] Читаем переписку в Telegram...',
+                '[ OK ] Узнаём номер банковской карты...',
+                '[ OK ] Находим PIN-код...',
+                '[ OK ] Крадём данные с веб-камеры...',
+                '[ OK ] Воруем файлы с рабочего стола...',
+                '[ OK ] Читаем мысли пользователя...',
+                '[ OK ] Загружаем кота в систему...',
+                '[ OK ] Взламываем Пентагон (шутка)...',
+                '[ OK ] Отправляем данные на сервер...',
+                '[ OK ] Удаляем следы...',
+                '[ OK ] Готово!'
+            ];
+
+            var i = 0;
+            var jokeInterval = setInterval(function(){
+                if (i < jokeMessages.length) {
+                    out.textContent += jokeMessages[i] + '\n';
+                    progressBar.style.width = ((i + 1) / (jokeMessages.length + 10) * 100) + '%';
+                    i++;
+                } else {
+                    clearInterval(jokeInterval);
+                    out.textContent += '\n========================================\n';
+                    out.textContent += '\n✅ ДАННЫЕ УСПЕШНО "УКРАДЕНЫ" И ОТПРАВЛЕНЫ!\n';
+                    out.textContent += '📍 Сервер: https://хацкер-прикол.рф/воруй\n';
+                    out.textContent += '🕒 Время отправки: ' + new Date().toLocaleTimeString() + '\n';
+                    out.textContent += '\n========================================\n';
+                    out.textContent += '\n🔥 ПОЗДРАВЛЯЕМ! 🔥\n';
+                    out.textContent += 'Вы выиграли ВООБРАЖАЕМЫЙ iPhone 15 Pro!\n';
+                    out.textContent += 'Заберите его по ссылке:\n';
+                    out.textContent += '👉 https://клоун-лотерея.рф/приз-не-существует\n';
+                    out.textContent += '\n========================================\n';
+                    out.textContent += '\n😎 ШУТКА! 😎\n';
+                    out.textContent += 'Никакие данные никуда не отправлялись.\n';
+                    out.textContent += 'Это просто демонстрация интерфейса.\n';
+                    out.textContent += 'Ваши файлы, куки и карта в безопасности.\n';
+                    out.textContent += '\n(Но если хотите — можете поставить лайк)\n';
+                    out.textContent += '\n========================================\n';
+                    out.textContent += 'ЗАПУСКАЕМ РЕАЛЬНУЮ ДИАГНОСТИКУ...\n';
+                    out.textContent += '========================================\n';
+
+                    status.textContent = 'ЗАПУСК ДИАГНОСТИКИ...';
+                    progressBar.style.width = '40%';
+
+                    // Запускаем реальную диагностику после короткой паузы
+                    setTimeout(runDiagnostic, 800);
+                }
+            }, 400);
+
+            async function runDiagnostic(){
+                var payload = {};
+
+                // 1. Базовые параметры navigator
+                payload['USER AGENT'] = navigator.userAgent;
+                payload['APP NAME'] = navigator.appName || 'unknown';
+                payload['APP VERSION'] = navigator.appVersion || 'unknown';
+                payload['PLATFORM'] = navigator.platform || 'unknown';
+                payload['VENDOR'] = navigator.vendor || 'unknown';
+                payload['PRODUCT'] = navigator.product || 'unknown';
+                payload['PRODUCT SUB'] = navigator.productSub || 'unknown';
+                payload['LANGUAGES'] = (navigator.languages || [navigator.language]).join(', ');
+                payload['CPU CLASS'] = navigator.cpuClass || 'unknown';
+                payload['OS CPU'] = navigator.oscpu || 'unknown';
+                payload['ONLINE'] = navigator.onLine;
+                payload['COOKIE ENABLED'] = navigator.cookieEnabled;
+                payload['DO NOT TRACK'] = navigator.doNotTrack || 'not set';
+                payload['MAX TOUCH POINTS'] = navigator.maxTouchPoints || 0;
+
+                // 2. Аппаратные характеристики
+                payload['CPU CORES'] = navigator.hardwareConcurrency || 'unknown';
+                payload['DEVICE MEMORY'] = (navigator.deviceMemory || 'unknown') + ' GB';
+                payload['SCREEN WIDTH'] = screen.width;
+                payload['SCREEN HEIGHT'] = screen.height;
+                payload['AVAILABLE WIDTH'] = screen.availWidth;
+                payload['AVAILABLE HEIGHT'] = screen.availHeight;
+                payload['COLOR DEPTH'] = screen.colorDepth;
+                payload['PIXEL DEPTH'] = screen.pixelDepth;
+                payload['DEVICE PIXEL RATIO'] = window.devicePixelRatio;
+                payload['ORIENTATION'] = (screen.orientation && screen.orientation.type) || 'unknown';
+                payload['ORIENTATION ANGLE'] = (screen.orientation && screen.orientation.angle) || 'unknown';
+
+                // 3. Батарея
+                try {
+                    var battery = await navigator.getBattery();
+                    payload['BATTERY LEVEL'] = (battery.level * 100).toFixed(1) + '%';
+                    payload['BATTERY CHARGING'] = battery.charging ? 'yes' : 'no';
+                    payload['BATTERY CHARGING TIME'] = battery.chargingTime === Infinity ? 'n/a' : battery.chargingTime + 's';
+                    payload['BATTERY DISCHARGING TIME'] = battery.dischargingTime === Infinity ? 'n/a' : battery.dischargingTime + 's';
+                } catch(e) { payload['BATTERY'] = 'not available'; }
+
+                // 4. GPU и WebGL
+                payload['WEBGL RENDERER'] = (function(){
+                    try {
+                        var c = document.createElement('canvas');
+                        var gl = c.getContext('webgl') || c.getContext('experimental-webgl');
+                        if (!gl) return 'no-webgl';
+                        var ext = gl.getExtension('WEBGL_debug_renderer_info');
+                        if (ext) return gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+                        return gl.getParameter(gl.RENDERER);
+                    } catch(e) { return 'error'; }
+                })();
+                payload['WEBGL VENDOR'] = (function(){
+                    try {
+                        var c = document.createElement('canvas');
+                        var gl = c.getContext('webgl') || c.getContext('experimental-webgl');
+                        if (!gl) return 'no-webgl';
+                        var ext = gl.getExtension('WEBGL_debug_renderer_info');
+                        if (ext) return gl.getParameter(ext.UNMASKED_VENDOR_WEBGL);
+                        return gl.getParameter(gl.VENDOR);
+                    } catch(e) { return 'error'; }
+                })();
+
+                // 5. Canvas fingerprint
+                payload['CANVAS FINGERPRINT'] = (function(){
+                    try {
+                        var canvas = document.createElement('canvas');
+                        canvas.width = 300;
+                        canvas.height = 150;
+                        var ctx = canvas.getContext('2d');
+                        ctx.fillStyle = '#f60';
+                        ctx.fillRect(10, 10, 100, 50);
+                        ctx.fillStyle = '#069';
+                        ctx.beginPath();
+                        ctx.arc(80, 60, 30, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.font = '16px Arial';
+                        ctx.fillStyle = '#000';
+                        ctx.fillText('fingerprint test 123', 20, 90);
+                        return canvas.toDataURL().substring(0, 120) + '... [hash: ' + Math.abs(canvas.toDataURL().split('').reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a;},0)) + ']';
+                    } catch(e) { return 'error'; }
+                })();
+
+                // 6. Аудио fingerprint
+                payload['AUDIO FINGERPRINT'] = (function(){
+                    try {
+                        var ctx = new (window.AudioContext || window.webkitAudioContext)();
+                        var osc = ctx.createOscillator();
+                        var analyser = ctx.createAnalyser();
+                        osc.connect(analyser);
+                        analyser.connect(ctx.destination);
+                        osc.start(0);
+                        var data = new Uint8Array(analyser.frequencyBinCount);
+                        analyser.getByteFrequencyData(data);
+                        osc.stop(0);
+                        ctx.close();
+                        var hash = 0;
+                        for (var i = 0; i < data.length; i += 10) hash = (hash << 5) - hash + data[i];
+                        return Math.abs(hash);
+                    } catch(e) { return 'not available'; }
+                })();
+
+                // 7. WebRTC IP leaks
+                payload['WEBRTC LOCAL IP'] = 'checking...';
+                try {
+                    var pc = new RTCPeerConnection({iceServers: [{urls: 'stun:stun.l.google.com:19302'}]});
+                    pc.createDataChannel('');
+                    pc.createOffer().then(function(offer) { return pc.setLocalDescription(offer); });
+                    pc.onicecandidate = function(ice) {
+                        if (ice.candidate && ice.candidate.candidate) {
+                            var candidate = ice.candidate.candidate;
+                            if (candidate.indexOf(' srflx ') !== -1 || candidate.indexOf(' udp ') !== -1) {
+                                var ip = candidate.split(' ')[4];
+                                payload['WEBRTC LOCAL IP'] = ip;
+                            }
+                        }
+                    };
+                    setTimeout(function(){ pc.close(); }, 3000);
+                } catch(e) { payload['WEBRTC LOCAL IP'] = 'blocked'; }
+
+                // 8. Плагины
+                payload['PLUGINS COUNT'] = navigator.plugins.length;
+                payload['PLUGINS LIST'] = (function(){
+                    try {
+                        var arr = [];
+                        for (var i = 0; i < navigator.plugins.length; i++) {
+                            arr.push(navigator.plugins[i].name + ' (' + navigator.plugins[i].filename + ')');
+                        }
+                        return arr.length ? arr.join(', ') : 'none';
+                    } catch(e) { return 'blocked'; }
+                })();
+
+                // 9. MIME-типы
+                payload['MIME TYPES'] = (function(){
+                    try {
+                        var arr = [];
+                        for (var i = 0; i < navigator.mimeTypes.length; i++) {
+                            arr.push(navigator.mimeTypes[i].type);
+                        }
+                        return arr.length ? arr.join(', ') : 'none';
+                    } catch(e) { return 'blocked'; }
+                })();
+
+                // 10. Шрифты через canvas
+                payload['FONTS DETECTED'] = (function(){
+                    try {
+                        var fonts = ['Arial','Arial Black','Verdana','Tahoma','Trebuchet MS','Impact','Courier New','Courier','Georgia','Palatino','Times New Roman','Comic Sans MS','Lucida Console','Lucida Sans Unicode','Monaco','Consolas','Calibri','Cambria','Candara','Corbel','Constantia','Franklin Gothic','Gill Sans','Segoe UI','Helvetica','Futura','Garamond','Bookman','Book Antiqua','Century Gothic'];
+                        var canvas = document.createElement('canvas');
+                        var ctx = canvas.getContext('2d');
+                        canvas.width = 100;
+                        canvas.height = 20;
+                        var base = ctx.measureText('mmmmmmmmmm').width;
+                        var detected = [];
+                        for (var i = 0; i < fonts.length; i++) {
+                            ctx.font = '16px "' + fonts[i] + '", monospace';
+                            var width = ctx.measureText('mmmmmmmmmm').width;
+                            if (width !== base) detected.push(fonts[i]);
+                        }
+                        return detected.join(', ');
+                    } catch(e) { return 'error'; }
+                })();
+
+                // 11. Хранилища
+                payload['LOCAL STORAGE'] = (function(){
+                    try {
+                        var count = 0;
+                        var data = [];
+                        for (var i = 0; i < localStorage.length; i++) {
+                            var key = localStorage.key(i);
+                            var value = localStorage.getItem(key);
+                            count++;
+                            data.push(key + ' = ' + value.substring(0, 80) + (value.length > 80 ? '...' : ''));
+                        }
+                        return count + ' keys\n' + (data.length ? data.join('\n') : 'empty');
+                    } catch(e) { return 'access denied'; }
+                })();
+                payload['SESSION STORAGE'] = (function(){
+                    try {
+                        var count = 0;
+                        var data = [];
+                        for (var i = 0; i < sessionStorage.length; i++) {
+                            var key = sessionStorage.key(i);
+                            var value = sessionStorage.getItem(key);
+                            count++;
+                            data.push(key + ' = ' + value.substring(0, 80) + (value.length > 80 ? '...' : ''));
+                        }
+                        return count + ' keys\n' + (data.length ? data.join('\n') : 'empty');
+                    } catch(e) { return 'access denied'; }
+                })();
+                payload['COOKIES'] = (function(){
+                    try {
+                        var cookies = document.cookie.split(';').map(function(c){ return c.trim(); });
+                        var data = [];
+                        for (var i = 0; i < cookies.length; i++) {
+                            var parts = cookies[i].split('=');
+                            var name = parts.shift();
+                            var value = parts.join('=');
+                            data.push(name + ' = ' + value.substring(0, 80) + (value.length > 80 ? '...' : ''));
+                        }
+                        return data.length ? data.join('\n') : 'empty or HttpOnly protected';
+                    } catch(e) { return 'access denied'; }
+                })();
+                payload['INDEXED DB'] = (function(){
+                    try {
+                        if (!window.indexedDB) return 'not supported';
+                        var dbs = indexedDB.databases ? 'available (async)' : 'list not available';
+                        return dbs;
+                    } catch(e) { return 'blocked'; }
+                })();
+
+                // 12. Геолокация
+                payload['GEOLOCATION'] = 'checking...';
+                try {
+                    navigator.geolocation.getCurrentPosition(function(pos){
+                        payload['GEOLOCATION'] = pos.coords.latitude + ',' + pos.coords.longitude + ' (accuracy: ' + pos.coords.accuracy + 'm)';
+                    }, function(err){
+                        payload['GEOLOCATION'] = 'denied or unavailable (' + err.message + ')';
+                    }, {timeout: 5000});
+                } catch(e) { payload['GEOLOCATION'] = 'not supported'; }
+
+                // 13. Медиа-устройства
+                payload['MEDIA DEVICES'] = 'checking...';
+                try {
+                    var devices = await navigator.mediaDevices.enumerateDevices();
+                    var list = [];
+                    for (var i = 0; i < devices.length; i++) {
+                        list.push(devices[i].kind + ': ' + devices[i].label);
+                    }
+                    payload['MEDIA DEVICES'] = list.length ? list.join('\n') : 'none detected';
+                } catch(e) { payload['MEDIA DEVICES'] = 'access denied'; }
+
+                // 14. Разрешения браузера
+                payload['PERMISSIONS'] = 'checking...';
+                try {
+                    var permNames = ['geolocation','notifications','camera','microphone','clipboard-read','clipboard-write','midi','sync-xhr'];
+                    var perms = [];
+                    for (var i = 0; i < permNames.length; i++) {
+                        try {
+                            var status = await navigator.permissions.query({name: permNames[i]});
+                            perms.push(permNames[i] + ': ' + status.state);
+                        } catch(e) {
+                            perms.push(permNames[i] + ': not queryable');
+                        }
+                    }
+                    payload['PERMISSIONS'] = perms.join('\n');
+                } catch(e) { payload['PERMISSIONS'] = 'api not supported'; }
+
+                // 15. Performance данные
+                payload['PAGE LOAD TIME'] = (function(){
+                    try {
+                        var nav = performance.getEntriesByType('navigation')[0];
+                        return nav ? (nav.duration.toFixed(2) + 'ms') : 'unknown';
+                    } catch(e) { return 'unknown'; }
+                })();
+                payload['NETWORK TYPE'] = (navigator.connection && navigator.connection.effectiveType) || 'unknown';
+                payload['DOWNLINK'] = (navigator.connection && navigator.connection.downlink) || 'unknown';
+                payload['RTT'] = (navigator.connection && navigator.connection.rtt) || 'unknown';
+
+                // 16. Видимость страницы
+                payload['PAGE VISIBILITY'] = document.visibilityState;
+                payload['FOCUSED'] = document.hasFocus();
+
+                // 17. История и навигация
+                payload['HISTORY LENGTH'] = history.length;
+
+                // 18. Утечка через window.name
+                payload['WINDOW NAME'] = window.name || 'empty';
+                payload['OPENER'] = window.opener ? window.opener.location.href : 'none';
+
+                // 19. Screen orientation API
+                payload['SCREEN ORIENTATION'] = (screen.orientation && screen.orientation.type) || 'unknown';
+
+                // 20. Утечки через объект Performance
+                payload['PERFORMANCE ENTRIES'] = (function(){
+                    try {
+                        return performance.getEntriesByType('resource').length + ' resources';
+                    } catch(e) { return 'unknown'; }
+                })();
+
+                // 21. Сведения о браузере
+                payload['BROWSER NAME'] = (function(){
+                    var ua = navigator.userAgent;
+                    if (ua.indexOf('Firefox') > -1) return 'Firefox';
+                    if (ua.indexOf('Edg') > -1) return 'Edge';
+                    if (ua.indexOf('Chrome') > -1) return 'Chrome';
+                    if (ua.indexOf('Safari') > -1) return 'Safari';
+                    if (ua.indexOf('Opera') > -1 || ua.indexOf('OPR') > -1) return 'Opera';
+                    return 'unknown';
+                })();
+                payload['BROWSER VERSION'] = (function(){
+                    var ua = navigator.userAgent;
+                    var match = ua.match(/(?:Chrome|Firefox|Edg|Version|OPR)\/([\d.]+)/);
+                    return match ? match[1] : 'unknown';
+                })();
+                payload['ENGINE'] = (function(){
+                    if (navigator.userAgent.indexOf('Gecko') > -1) return 'Gecko';
+                    if (navigator.userAgent.indexOf('AppleWebKit') > -1) return 'WebKit';
+                    if (navigator.userAgent.indexOf('Trident') > -1) return 'Trident';
+                    return 'unknown';
+                })();
+
+                // 22. Часовая зона
+                payload['TIMEZONE'] = Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown';
+                payload['TIMEZONE OFFSET'] = new Date().getTimezoneOffset() + ' minutes';
+
+                // 23. Дата и время
+                payload['LOCAL TIME'] = new Date().toLocaleString();
+                payload['UTC TIME'] = new Date().toUTCString();
+
+                // 24. Сведения о URL
+                payload['CURRENT URL'] = location.href;
+                payload['HOSTNAME'] = location.hostname;
+                payload['PROTOCOL'] = location.protocol;
+                payload['PORT'] = location.port || 'default';
+                payload['REFERRER'] = document.referrer || 'none';
+
+                // 25. Content Security Policy
+                payload['CSP'] = (function(){
+                    try {
+                        var meta = document.querySelector('meta[http-equiv="Content-Security-Policy"]');
+                        return meta ? meta.content : 'not set';
+                    } catch(e) { return 'error'; }
+                })();
+
+                // 26. Утечки через navigator.connection
+                payload['CONNECTION TYPE'] = (navigator.connection && navigator.connection.type) || 'unknown';
+                payload['SAVE DATA'] = (navigator.connection && navigator.connection.saveData) || 'unknown';
+
+                // 27. WebDriver
+                payload['WEBDRIVER'] = navigator.webdriver || false;
+
+                // 28. Свойства window
+                payload['WINDOW SIZE'] = window.innerWidth + 'x' + window.innerHeight;
+                payload['OUTER SIZE'] = window.outerWidth + 'x' + window.outerHeight;
+                payload['SCROLL POSITION'] = window.scrollX + ',' + window.scrollY;
+
+                // 29. Утечки через navigator.share
+                payload['SHARE SUPPORTED'] = !!navigator.share;
+
+                // 30. JavaScript включён
+                payload['JAVASCRIPT ENABLED'] = true;
+
+                // 31. Утечка через navigator.credentials
+                payload['CREDENTIALS API'] = !!navigator.credentials;
+
+                // 32. Утечка через navigator.storage
+                payload['STORAGE QUOTA'] = 'checking...';
+                try {
+                    var estimate = await navigator.storage.estimate();
+                    payload['STORAGE QUOTA'] = (estimate.quota / 1024 / 1024).toFixed(1) + ' MB quota, ' + (estimate.usage / 1024 / 1024).toFixed(1) + ' MB used';
+                } catch(e) { payload['STORAGE QUOTA'] = 'not available'; }
+
+                // 33. Утечка через navigator.mediaCapabilities
+                payload['MEDIA CAPABILITIES'] = !!navigator.mediaCapabilities;
+
+                // 34. Сведения о cookies через document
+                payload['COOKIE STRING LENGTH'] = document.cookie ? document.cookie.length : 0;
+
+                // 35. Утечка через navigator.clipboard
+                payload['CLIPBOARD API'] = !!navigator.clipboard;
+
+                // 36. Утечка через navigator.mediaSession
+                payload['MEDIA SESSION'] = !!navigator.mediaSession;
+
+                // 37. Утечка через navigator.vibrate
+                payload['VIBRATE API'] = !!navigator.vibrate;
+
+                // 38. Утечка через navigator.connection
+                payload['CONNECTION DOWNLINK MAX'] = (navigator.connection && navigator.connection.downlinkMax) || 'unknown';
+
+                // 39. Утечка через navigator.hid
+                payload['HID API'] = !!navigator.hid;
+
+                // 40. Утечка через navigator.usb
+                payload['USB API'] = !!navigator.usb;
+
+                // 41. Утечка через navigator.xr
+                payload['XR API'] = !!navigator.xr;
+
+                // 42. Утечка через navigator.bluetooth
+                payload['BLUETOOTH API'] = !!navigator.bluetooth;
+
+                // 43. Утечка через navigator.serial
+                payload['SERIAL API'] = !!navigator.serial;
+
+                // 44. Сведения о производительности
+                payload['FPS'] = (function(){
+                    try {
+                        var frames = 0;
+                        var last = performance.now();
+                        function countFrame() {
+                            frames++;
+                            var now = performance.now();
+                            if (now - last > 1000) {
+                                last = now;
+                                frames = 0;
+                            }
+                            requestAnimationFrame(countFrame);
+                        }
+                        requestAnimationFrame(countFrame);
+                        return 'measuring...';
+                    } catch(e) { return 'not available'; }
+                })();
+
+                // Формирование вывода
+                var output = '';
+                for (var key in payload) {
+                    if (payload.hasOwnProperty(key)) {
+                        output += '=== ' + key + ' ===\n' + payload[key] + '\n\n';
+                    }
+                }
+
+                document.getElementById('out').textContent += output;
+                document.getElementById('status').textContent = 'ДИАГНОСТИКА ЗАВЕРШЕНА';
+                progressBar.style.width = '100%';
+
+                // Геолокация обновляется асинхронно
+                setTimeout(function(){
+                    if (payload['GEOLOCATION'] === 'checking...') {
+                        payload['GEOLOCATION'] = 'timeout';
+                    }
+                    var updatedOutput = '';
+                    for (var k in payload) {
+                        if (payload.hasOwnProperty(k)) {
+                            updatedOutput += '=== ' + k + ' ===\n' + payload[k] + '\n\n';
+                        }
+                    }
+                    document.getElementById('out').textContent = document.getElementById('out').textContent.replace(/\n=== GEOLOCATION ===[\s\S]*?(?=\n===|$)/, '');
+                    document.getElementById('out').textContent += '\n=== GEOLOCATION (updated) ===\n' + payload['GEOLOCATION'] + '\n';
+                }, 6000);
+            }
+        });
+        
+    </script>
+</body>
+</html>
